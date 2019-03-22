@@ -42,7 +42,38 @@ socketIO.on('connection', function(socket) {
         console.log('blue event heard');
         socketIO.sockets.emit('color_change', {r:0, g:0, b:255});
     });
+
+    //controller for the second event in which player two affects player one
+    socket.on('nred', function(data) {
+        console.log('red2 event heard');
+        socketIO.sockets.emit('color_change_two', {r:255, g:0, b:0});
+    });
+
+    socket.on('ngreen', function(data) {
+        console.log('green2 event heard');
+        socketIO.sockets.emit('color_change_two', {r:0, g:255, b:0});
+    });
+
+    socket.on('nblue', function(data) {
+        console.log('blue2 event heard');
+        socketIO.sockets.emit('color_change_two', {r:0, g:0, b:255});
+    });
+
+
+
+
+
+
 });
+
+
+    
+
+
+
+
+
+
 
 //finally, start server
 server.listen(LISTEN_PORT);
