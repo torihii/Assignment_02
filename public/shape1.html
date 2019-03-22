@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+  </head>
+  <body>
+ 
+    <a-scene>
+
+            <a-entity position="0 2 0 " camera look-controls wasd-controls>
+                    <!-- if you add rayOrigin:mouse to teh cursor properties selection happens where you click -->
+                    <a-entity   cursor="fuse:true; fuseTimeout:500; rayOrigin:mouse;"></a-entity>
+                  
+                </a-entity>
+
+
+      <a-box id= "box1" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-box id= "box2" position="0 1.25 -5" rotation="0 45 0" color="#6B1C1C"></a-box>
+      <a-box id= "box3" position="1 0.75 -3" rotation="0 45 0" color="#FFC65D"></a-box>
+   
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="FFFFFF"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>  
+        let socket = io();
+
+        //default connect event
+         socket.on('connect', function() {
+            console.log("connected!");
+         });
+    
+    document.querySelector('#box1').addEventListener('click', function() {
+        socket.emit('red');
+
+
+    });
+    </script>
+  </body>
+</html>
