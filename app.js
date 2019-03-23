@@ -2,19 +2,19 @@ const express   = require('express');
 const app       = express();
 const http      = require('http');
 const server    = http.createServer(app);
-const socketIO  = require('socket.io')(server); //hello I am new
+const socketIO  = require('socket.io')(server); 
 
-const LISTEN_PORT = 8080; //make sure greater than 3000. Some ports are reserved/blocked by firewall ...
+const LISTEN_PORT = 8080; 
 
-app.use((express.static(__dirname + '/public'))); //set root dir to the public folder
+app.use((express.static(__dirname + '/public'))); 
 
 //routes
 app.get('/color', function(req,res) {
-    res.sendFile(__dirname + '/public/player_two.html');
+    res.sendFile(__dirname + '/public/color.html');
 });
 
 app.get('/controller', function(req,res) {
-    res.sendFile(__dirname + '/public/player_one.html');
+    res.sendFile(__dirname + '/public/controller.html');
 });
 
 //websocket stuff
@@ -65,12 +65,6 @@ socketIO.on('connection', function(socket) {
 
 
 });
-
-
-    
-
-
-
 
 
 
